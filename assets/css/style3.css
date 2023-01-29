@@ -43,9 +43,14 @@ img {
 }
 
 #highscores {
-    display: block;
+    background-color: aquamarine;
+    font-size: 4rem;
     text-align: center;
+    color: white;
+    padding: 1rem 0;
     width: 100%;
+    margin-bottom: 2rem;
+    border-radius: 3px;
 }
 
 .quiz-box {

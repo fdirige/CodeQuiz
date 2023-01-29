@@ -2,15 +2,14 @@
 const startBtn= document.getElementById("start")
 startBtn.addEventListener("click", startQuiz)
 function startQuiz () {
-    const questionWrapper= document.getElementById
+    const questionWrapper = document.getElementById
 ("question-wrapper")
     questionWrapper.classList.remove("hidden")
     startCountdown();
 }
 
 
-
-const scoreBtn= document.getElementById("scores")
+const scoreBtn = document.getElementById("scores")
 scoreBtn.addEventListener("click", showHighscores)
 function showHighscores () {
     const scores=[
@@ -32,7 +31,7 @@ function showHighscores () {
         }
     ]
 
-    const highscoresWrapper= document.getElementById
+    const highscoresWrapper = document.getElementById
     ("highscores")
 
 
