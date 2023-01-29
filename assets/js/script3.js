@@ -1,3 +1,49 @@
+
+const startBtn= document.getElementById("start")
+startBtn.addEventListener("click", startQuiz)
+function startQuiz () {
+    const questionWrapper= document.getElementById
+("question-wrapper")
+    questionWrapper.classList.remove("hidden")
+    startCountdown();
+}
+
+
+
+const scoreBtn= document.getElementById("scores")
+scoreBtn.addEventListener("click", showHighscores)
+function showHighscores () {
+    const scores=[
+        {
+            initials: "AJ", 
+            score: 4
+        },
+        {
+            initials: "BJ", 
+            score: 3
+        },
+        {
+            initials: "CJ", 
+            score: 2
+        },
+        {
+            initials: "FJ", 
+            score: 2
+        }
+    ]
+
+    const highscoresWrapper= document.getElementById
+    ("highscores")
+
+
+    for (let i = 0; i < scores.length; i++) {
+        const scoreInfo = scores[i];
+        highscoresWrapper.innerHTML += scoreInfo.initials + " " + scoreInfo.score + "<br>"
+    }
+
+    highscoresWrapper.classList.remove("hidden")
+}
+
 class Quiz {
     constructor(questions) {
         this.score = 0;
@@ -127,4 +173,3 @@ function startCountdown() {
     }, 1000)
 }
 
-startCountdown();

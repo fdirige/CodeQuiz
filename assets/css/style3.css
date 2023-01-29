@@ -30,6 +30,7 @@ img {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    flex-flow: column wrap;
 }
 
 .quiz-box {
@@ -41,6 +42,12 @@ img {
     border-radius: 5px;
 }
 
+#highscores {
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+
 .quiz-box {
     background-color: aquamarine;
     font-size: 4rem;
@@ -50,6 +57,10 @@ img {
     width: 100%;
     margin-bottom: 2rem;
     border-radius: 3px;
+}
+
+.hidden {
+    display: none;
 }
 
 .quiz-header {
