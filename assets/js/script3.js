@@ -1,46 +1,11 @@
 
-const startBtn= document.getElementById("start")
+const startBtn = document.getElementById("start")
 startBtn.addEventListener("click", startQuiz)
-function startQuiz () {
+function startQuiz() {
     const questionWrapper = document.getElementById
-("question-wrapper")
+        ("question-wrapper")
     questionWrapper.classList.remove("hidden")
     startCountdown();
-}
-
-
-const scoreBtn = document.getElementById("scores")
-scoreBtn.addEventListener("click", showHighscores)
-function showHighscores () {
-    const scores=[
-        {
-            initials: "AJ", 
-            score: 4
-        },
-        {
-            initials: "BJ", 
-            score: 3
-        },
-        {
-            initials: "CJ", 
-            score: 2
-        },
-        {
-            initials: "FJ", 
-            score: 2
-        }
-    ]
-
-    const highscoresWrapper = document.getElementById
-    ("highscores")
-
-
-    for (let i = 0; i < scores.length; i++) {
-        const scoreInfo = scores[i];
-        highscoresWrapper.innerHTML += scoreInfo.initials + " " + scoreInfo.score + "<br>"
-    }
-
-    highscoresWrapper.classList.remove("hidden")
 }
 
 class Quiz {
@@ -57,6 +22,11 @@ class Quiz {
     guess(answer) {
         if (this.getQuestionIndex().isCorrectAnswer(answer)) {
             this.score++;
+        }
+        else {
+            quizTime = quizTime-100;
+            console.log("test");
+            console.log(quizTime);
         }
         this.questionIndex++
     }
@@ -86,14 +56,14 @@ function displayQuestion() {
         showScores();
     } else {
         // SHOW NEXT QUESTION
-        let questionElement =document.getElementById("question");
+        let questionElement = document.getElementById("question");
         questionElement.innerHTML = quiz.getQuestionIndex().text;
 
         // SHOW OPTIONS
         let choices = quiz.getQuestionIndex().choices;
         for (let i = 0; i < choices.length; i++) {
             let choiceElement = document.getElementById("choice"
-            +i);
+                + i);
             choiceElement.innerHTML = choices[i];
             guess("btn" + i, choices[i]);
         }
@@ -105,7 +75,7 @@ function displayQuestion() {
 // GUESS FUNCTION
 function guess(id, guess) {
     let button = document.getElementById(id);
-    button.onclick = function() {
+    button.onclick = function () {
         quiz.guess(guess);
         displayQuestion();
     }
@@ -115,35 +85,108 @@ function guess(id, guess) {
 function showProgress() {
     let currentQuestionNumber = quiz.questionIndex + 1;
     let progressElement = document.getElementById("progress");
-    progressElement.innerHTML = 
-    `Question ${currentQuestionNumber} of ${quiz.questions.length}
+    progressElement.innerHTML =
+        `Question ${currentQuestionNumber} of ${quiz.questions.length}
     `;
 }
 
 // SHOW SCORE
 function showScores() {
-    let quizEndHTML = 
+    let quizEndHTML =
         `
             <h1>Quiz Completed</h1>
             <h2 id="score">You Scored: ${quiz.score} of ${quiz.questions.length}</h2>
             <div class="quiz-repeat">
                 <a href="index3.html">Take Quiz Again</a>
             </div>
+            <div class="quiz-repeat">
+                <a href="index2.html">High Scores</a>
+            </div>
         `;
-        let quizElement = document.getElementById("quiz");
-        quizElement.innerHTML = quizEndHTML;
+    let quizElement = document.getElementById("quiz");
+    quizElement.innerHTML = quizEndHTML;
 }
+
+// const scoreBtn = document.getElementById("scores")
+// scoreBtn.addEventListener("click", showHighscores)
+// function showHighscores() {
+//     const scores = [
+//         {
+//             initials: "AJ",
+//             score: 4
+//         },
+//         {
+//             initials: "BJ",
+//             score: 3
+//         },
+//         {
+//             initials: "CJ",
+//             score: 2
+//         },
+//         {
+//             initials: "FJ",
+//             score: 2
+//         }
+//     ]
+
+//     const highscoresWrapper = document.getElementById
+//         ("highscores")
+
+
+//     for (let i = 0; i < scores.length; i++) {
+//         const scoreInfo = scores[i];
+//         highscoresWrapper.innerHTML += scoreInfo.initials + " " + scoreInfo.score + "<br>"
+//     }
+
+//     highscoresWrapper.classList.remove("hidden")
+// }
+
+// renderScore();
+
+// function displayMessage(type, message) {
+//     msgDiv.textContent = message;
+//     msgDiv.setAttribute("class", type);
+// }
+
+// function renderScore() {
+//     var scores = localStorage.getItem("scores");
+//     var initials = localStorage.getItem("initials");
+
+//     if (!scores || !initials) {
+//       return;
+//     }
+
+//     userScoresSpan.textContent = scores;
+//     userInitialsSpan.textContent = initials;
+//   }
+
+//   scoreBtn.addEventListener("click", function(event) {
+//     event.preventDefault();
+
+//     var scores = document.querySelector("#scores").value;
+//     var initials = document.querySelector("#initials").value;
+
+//     if (initials === "") {
+//       displayMessage("error", "Initials cannot be blank");
+//     } else {
+//       displayMessage("success", "Succesfully entered!");
+
+//       localStorage.setItem("scores", score);
+//       localStorage.setItem("initials", initials);
+//       renderScore();
+//     }
+//   });
 
 // CREATE QUIZ QUESTIONS
 let questions = [
     new Question(
-        "Hyper Text Markup Language Stands For?", ["JQuery", "XHTML", "CSS", "HTML"], "HTML" ),
-    new Question(  
-        "Which is JavaScript Framework?", ["React", "Laravel", "Django", "Sass"], "React" ),
+        "Hyper Text Markup Language Stands For?", ["JQuery", "XHTML", "CSS", "HTML"], "HTML"),
     new Question(
-        "Which is backend language", ["PHP", "HTML", "CSS", "HTML"], "PHP" ),
+        "Which is JavaScript Framework?", ["React", "Laravel", "Django", "Sass"], "React"),
     new Question(
-        "Which is best for Artificial intelligence?", ["Sass", "Python", "CSS", "all"], "Python" ),
+        "Which is backend language?", ["PHP", "HTML", "CSS", "HTML"], "PHP"),
+    new Question(
+        "Which is best for Artificial intelligence?", ["Sass", "Python", "CSS", "all"], "Python"),
 ];
 
 let quiz = new Quiz(questions);
@@ -159,12 +202,12 @@ quizTime = quizTimer / 60;
 let counting = document.getElementById("count-down");
 
 function startCountdown() {
-    let quizTimer = setInterval(function() {
+    let quizTimer = setInterval(function () {
         if (quizTime <= 0) {
             clearInterval(quizTimer);
             showScores();
         } else {
-            quizTime --;
+            quizTime--;
             let sec = Math.floor(quizTime % 60);
             let min = Math.floor(quizTime / 60) % 60;
             counting.innerHTML = `TIME: ${min} : ${sec}`;
