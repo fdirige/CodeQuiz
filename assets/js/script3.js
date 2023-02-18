@@ -102,9 +102,22 @@ function showScores() {
             <div class="quiz-repeat">
                 <a href="index2.html">High Scores</a>
             </div>
+            <label>Your Initials:</label>
+            <form id ="form"><input class="initials" type="text" placeholder="Your Initials here">
+            <button class="submit-initials" type="submit">Submit</button>
+            </form>
         `;
+    
+    
     let quizElement = document.getElementById("quiz");
     quizElement.innerHTML = quizEndHTML;
+    let formElement = document.getElementById("form");
+    formElement.addEventListener("submit", function(event){
+        event.preventDefault();
+        var initials = document.querySelector(".initials");
+        console.log(initials.value);
+        console.log(quiz.score);
+    });
 }
 
 // const scoreBtn = document.getElementById("scores")

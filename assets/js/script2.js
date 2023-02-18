@@ -1,24 +1,6 @@
 const submitInitials = document.getElementById("scores")
 submitInitials.addEventListener("click", showHighscores)
 function showHighscores() {
-    const scores = [
-        {
-            initials: "AJ",
-            score: 4
-        },
-        {
-            initials: "BJ",
-            score: 3
-        },
-        {
-            initials: "CJ",
-            score: 2
-        },
-        {
-            initials: "FJ",
-            score: 2
-        }
-    ]
 
     const highscoresWrapper = document.getElementById
         ("highscores")
@@ -51,19 +33,19 @@ function renderScore() {
     userInitialsSpan.textContent = initials;
   }
 
-  scoreBtn.addEventListener("click", function(event) {
-    event.preventDefault();
+//   scoreBtn.addEventListener("click", function(event) {
+//     event.preventDefault();
 
-    var scores = document.querySelector("#scores").value;
-    var initials = document.querySelector("#initials").value;
+//     var scores = document.querySelector("#scores").value;
+//     var initials = document.querySelector("#initials").value;
 
-    if (initials === "") {
-      displayMessage("error", "Initials cannot be blank");
-    } else {
-      displayMessage("success", "Succesfully entered!");
+//     if (initials === "") {
+//       displayMessage("error", "Initials cannot be blank");
+//     } else {
+//       displayMessage("success", "Succesfully entered!");
 
-      localStorage.setItem("scores", score);
-      localStorage.setItem("initials", initials);
-      renderScore();
-    }
-  });
+//       localStorage.setItem("scores", score);
+//       localStorage.setItem("initials", initials);
+//       renderScore();
+//     }
+//   });
