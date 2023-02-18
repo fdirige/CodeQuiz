@@ -117,6 +117,15 @@ function showScores() {
         var initials = document.querySelector(".initials");
         console.log(initials.value);
         console.log(quiz.score);
+        if (localStorage.getItem("highscores")) {
+            var highscores = JSON.parse(localStorage.getItem("highscores"));
+            highscores.push({initials:initials.value, quizScore:quiz.score});
+        
+        localStorage.setItem("highscores", JSON.stringify(highscores));
+        }
+        else {
+            localStorage.setItem("highscores", JSON.stringify([{initials:initials.value, quizScore:quiz.score}]));
+        }
     });
 }
 
