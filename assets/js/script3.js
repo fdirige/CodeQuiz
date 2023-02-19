@@ -1,4 +1,5 @@
 
+// START BUTTON AT BEGINNING OF QUIZ
 const startBtn = document.getElementById("start")
 startBtn.addEventListener("click", startQuiz)
 function startQuiz() {
@@ -8,6 +9,7 @@ function startQuiz() {
     startCountdown();
 }
 
+// CREATE A CONSTRUCTOR FOR QUESTIONS
 class Quiz {
     constructor(questions) {
         this.score = 0;
@@ -37,7 +39,6 @@ class Quiz {
 }
 
 // CREATE A QUESTION CLASS
-
 class Question {
     constructor(text, choices, answer) {
         this.text = text;
