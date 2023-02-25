@@ -137,7 +137,7 @@ let questions = [
     new Question(
         "Which is JavaScript Framework?", ["React", "Laravel", "Django", "Sass"], "React"),
     new Question(
-        "Which is backend language?", ["PHP", "HTML", "CSS", "HTML"], "PHP"),
+        "Which is backend language?", ["PHP", "HTML", "CSS", "SQL"], "PHP"),
     new Question(
         "Which is best for Artificial intelligence?", ["Sass", "Python", "CSS", "all"], "Python"),
 ];
